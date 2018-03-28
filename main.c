@@ -1,5 +1,6 @@
-#include <stdio.h>
-#include <SDL2/SDL.h>
+//#include <stdio.h>
+//#include <SDL2/SDL.h>
+#include "Util.h"
 
 int main()
 {
@@ -9,8 +10,9 @@ int main()
     int yres = 400;
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(xres, yres, 0, &window, &renderer);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-    SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
-    SDL_Delay(10000);
+    Util_QuickFill(renderer, 255, 255, 0);
+    Util_QuickFill(renderer, 255, 0, 0);
+    Util_QuickFill(renderer, 0, 255, 0);
+    Util_QuickFill(renderer, 0, 0, 255);
+
 }
