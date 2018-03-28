@@ -1,5 +1,5 @@
-//#include <stdio.h>
-//#include <SDL2/SDL.h>
+#include <stdio.h>
+#include <SDL2/SDL.h>
 #include "Util.h"
 
 int main()
@@ -11,8 +11,12 @@ int main()
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(xres, yres, 0, &window, &renderer);
     Util_QuickFill(renderer, 255, 255, 0);
+    SDL_Delay(3000);
     Util_QuickFill(renderer, 255, 0, 0);
+    SDL_Delay(3000);
     Util_QuickFill(renderer, 0, 255, 0);
+    SDL_Delay(3000);
     Util_QuickFill(renderer, 0, 0, 255);
+    SDL_Delay(3000);
 
 }
