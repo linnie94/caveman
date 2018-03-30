@@ -13,17 +13,16 @@ int main()
     int done = 0;
     while(!done)
     {
-        int t1 = SDL_GetTicks();
+        const int t1 = SDL_GetTicks();
         SDL_PollEvent(&event);
         key = SDL_GetKeyboardState(NULL);
         if(event.type == SDL_QUIT || key[SDL_SCANCODE_ESCAPE] || key[SDL_SCANCODE_END])
         {
             done = 1;
         }
-
         Util_QuickFill(renderer, rand() % 256, rand() % 256, rand() % 256);
-        int t2 = SDL_GetTicks();
-        int ms = 1000.0 / (60 - (t2 - t1));
+        const int t2 = SDL_GetTicks();
+        const int ms = 1000.0 / (60 - (t2 - t1));
         SDL_Delay(ms < 0 ? 0 : ms);
     }
 
