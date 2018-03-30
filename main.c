@@ -13,6 +13,8 @@ int main()
     int done = 0;
     while(!done)
     {
+        int t1;
+        t1 = SDL_GetTicks();
         SDL_PollEvent(&event);
         key = SDL_GetKeyboardState(NULL);
         if(event.type == SDL_QUIT || key[SDL_SCANCODE_ESCAPE] || key[SDL_SCANCODE_END])
@@ -21,12 +23,16 @@ int main()
         }
 
         Util_QuickFill(renderer, 255, 255, 0);
-        SDL_Delay(1500);
+        SDL_Delay(60);
         Util_QuickFill(renderer, 255, 0, 0);
-        SDL_Delay(1500);
+        SDL_Delay(60);
         Util_QuickFill(renderer, 0, 255, 0);
-        SDL_Delay(1500);
+        SDL_Delay(60);
         Util_QuickFill(renderer, 0, 0, 255);
-        SDL_Delay(1500);
+        SDL_Delay(60);
+        int t2;
+        t2 = SDL_GetTicks();
+        printf("%d\n", t2 - t1);
     }
+
 }
