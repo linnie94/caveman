@@ -26,5 +26,4 @@ int main()
         const int ms = 1000.0 / (60 - (t2 - t1));
         SDL_Delay(ms < 0 ? 0 : ms);
     }
-
 }
