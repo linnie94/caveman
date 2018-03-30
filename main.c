@@ -24,7 +24,7 @@ int main()
         Util_QuickFill(renderer, rand() % 256, rand() % 256, rand() % 256);
         SDL_Delay(60);
         int t2 = SDL_GetTicks();
-        printf("%d\n", t2 - t1);
+        printf("%0.2f\n", 1000.0 / (t2 - t1));
     }
 
 }
