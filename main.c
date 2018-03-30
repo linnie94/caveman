@@ -22,9 +22,9 @@ int main()
         }
 
         Util_QuickFill(renderer, rand() % 256, rand() % 256, rand() % 256);
-        SDL_Delay(15);
         int t2 = SDL_GetTicks();
-        printf("%0.2f\n", 1000.0 / (t2 - t1));
+        int ms = 1000.0 / (60 - (t2 - t1));
+        SDL_Delay(ms < 0 ? 0 : ms);
     }
 
 }
