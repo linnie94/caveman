@@ -1,2 +1,2 @@
-
-Bring over Util::Load() from explosions. I'll stitch together the pngs into one bmp.
+1. Bring over Util::Load() from explosions.
+2. Load four surfaces, one for each of the .bmp art files in the art folder.
