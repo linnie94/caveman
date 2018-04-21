@@ -10,7 +10,7 @@ void check(void* p)
 {
     if(p == NULL)
     {
-        printf(SDL_GetError()\n);
+        printf("%s\n",SDL_GetError());
         exit(1);
     }
 }
