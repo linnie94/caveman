@@ -6,7 +6,7 @@ void Util_QuickFill(SDL_Renderer* renderer, int r, int g, int b)
     SDL_RenderClear(renderer);
 }
 
-void check(void* p)
+static void check(void* p)
 {
     if(p == NULL)
     {
@@ -15,7 +15,7 @@ void check(void* p)
     }
 }
 
-SDL_Surface* load(const char* path, uint32_t r, uint32_t g, uint32_t b)
+SDL_Surface* Util_load(const char* path, uint32_t r, uint32_t g, uint32_t b)
 {
     // Loads surface from bmp image.
     SDL_Surface* bmp = SDL_LoadBMP(path);
