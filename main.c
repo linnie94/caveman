@@ -7,6 +7,7 @@
 //  Copyright © 2018 Lynn Hyerin Sohn. All rights reserved.
 //
 #include "Util.h"
+#include "Sdl.h"
 
 int main()
 {
