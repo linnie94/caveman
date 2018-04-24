@@ -8,5 +8,5 @@ struct Sdl
     SDL_Renderer* renderer;
     int xres;
     int yres;
-    Sdl(int xres, int yres);
-}
+    
+};
