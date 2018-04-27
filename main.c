@@ -11,9 +11,11 @@
 int main()
 {
     SDL_Window* window;
-    SDL_Renderer* renderer;
+    SDL_Renderer* renderer = NULL;
     const int xres = 800;
     const int yres = 400;
+    SDL_Surface* surface = Util_load("art/basic.bmp", 0, 0, 0);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
     const uint8_t* key;
     SDL_Event event;
     SDL_Init(SDL_INIT_VIDEO);
@@ -28,7 +30,7 @@ int main()
         {
             done = 1;
         }
-        Util_QuickFill(renderer, rand() % 256, rand() % 256, rand() % 256);
+        //Util_QuickFill(renderer, rand() % 256, rand() % 256, rand() % 256);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
