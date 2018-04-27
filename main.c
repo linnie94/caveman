@@ -1,4 +1,3 @@
-
 //
 //  main.c
 //  caveman
@@ -6,8 +5,8 @@
 //  Created by Lynn Hyerin Sohn on 2018-03-28.
 //  Copyright © 2018 Lynn Hyerin Sohn. All rights reserved.
 //
+
 #include "Util.h"
-#include "Sdl.h"
 
 int main()
 {
