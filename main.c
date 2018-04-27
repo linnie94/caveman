@@ -7,15 +7,14 @@
 //
 
 #include "Util.h"
+#include "sdl.h"
 
 int main()
 {
-    SDL_Window* window;
-    SDL_Renderer* renderer = NULL;
-    const int xres = 800;
-    const int yres = 400;
+    sdl(800, 400);
     SDL_Surface* surface = Util_load("art/basic.bmp", 0, 0, 0);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    // Input
     const uint8_t* key;
     SDL_Event event;
     SDL_Init(SDL_INIT_VIDEO);
