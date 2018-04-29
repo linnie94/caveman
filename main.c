@@ -31,7 +31,7 @@ int main()
         {
             done = 1;
         }
-        //Util_QuickFill(renderer, rand() % 256, rand() % 256, rand() % 256);
+        Util_QuickFill(renderer, 0, 0, 0);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
