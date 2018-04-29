@@ -26,10 +26,13 @@ int main()
     SDL_Event event;
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(xres, yres, 0, &window, &renderer);
+
+    // Main Loop
     int done = 0;
     while(!done)
     {
         const int t1 = SDL_GetTicks();
+        // Exit
         SDL_PollEvent(&event);
         key = SDL_GetKeyboardState(NULL);
         if(event.type == SDL_QUIT || key[SDL_SCANCODE_ESCAPE] || key[SDL_SCANCODE_END])
@@ -38,10 +41,18 @@ int main()
         }
         // Screen
         Util_QuickFill(renderer, 0, 0, 0);
-        SDL_Rect from = {32, 32, 16, 16};
-        SDL_Rect to = {0, 0, 32, 32};
+        SDL_Rect from;
+        from.x = 32;
+        from.y = 32;
+        from.w = 16;
+        from.h = 16;
+        SDL_Rect to;
+        to.x = 0;
+        to.y = 0;
+        to.w = 32;
+        to.h = 32;
+        SDL_RenderCopy(renderer, texture, NULL, NULL);
         SDL_RenderCopy(renderer, texture, &from, &to);
-
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
