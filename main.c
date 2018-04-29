@@ -15,7 +15,12 @@ int main()
     const int xres = 800;
     const int yres = 400;
     SDL_Surface* surface = Util_load("art/basic.bmp", 0, 0, 0);
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(&renderer, surface);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    if(texture == NULL)
+    {
+        printf("%s\n", SDL_GetError());
+        exit(1);
+    }
     // Input
     const uint8_t* key;
     SDL_Event event;
@@ -31,7 +36,12 @@ int main()
         {
             done = 1;
         }
+        // Screen
         Util_QuickFill(renderer, 0, 0, 0);
+        SDL_Rect from = {32, 32, 16, 16};
+        SDL_Rect to = {0, 0, 32, 32};
+        SDL_RenderCopy(renderer, texture, &from, &to);
+
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
