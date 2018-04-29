@@ -16,7 +16,7 @@ int main()
     const int yres = 400;
     SDL_Surface* surface = Util_load("art/basic.bmp", 0, 0, 0);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-    if(texture == NULL)
+    if(surface == NULL || texture == NULL)
     {
         printf("%s\n", SDL_GetError());
         exit(1);
