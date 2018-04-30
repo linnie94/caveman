@@ -16,8 +16,10 @@ int main()
     const int yres = 400;
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(xres, yres, 0, &window, &renderer);
-    SDL_Surface* surface = Util_load("art/basic.bmp", 0, 0, 0);
+    SDL_Surface* surface = Util_load("art/basic.bmp", 255, 255, 255);
+    SDL_Surface* surface_c = Util_load("art/chars.bmp", 255, 255, 255);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Texture* texture_c = SDL_CreateTextureFromSurface(renderer, surface_c);
     if(surface == NULL || texture == NULL)
     {
         printf("%s\n", SDL_GetError());
@@ -42,8 +44,8 @@ int main()
         // Screen
         Util_QuickFill(renderer, 0, 0, 0);
         SDL_Rect from;
-        from.x = 32;
-        from.y = 32;
+        from.x = 0;
+        from.y = 128;
         from.w = 16;
         from.h = 16;
         SDL_Rect to;
@@ -55,9 +57,22 @@ int main()
         {
             for(int y = 0; y < yres; y += 32)
             {
+                to.x = x;
+                to.y = y;
                 SDL_RenderCopy(renderer, texture, &from, &to);
             }
         }
+        SDL_Rect from_g;
+        from_g.x = 96;
+        from_g.y = 96;
+        from_g.w = 16;
+        from_g.h = 16;
+        SDL_Rect to_g;
+        to_g.x = 16;
+        to_g.y = 16;
+        to_g.w = 32;
+        to_g.h = 32;
+        SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
