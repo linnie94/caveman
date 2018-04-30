@@ -51,8 +51,13 @@ int main()
         to.y = 0;
         to.w = 32;
         to.h = 32;
-        SDL_RenderCopy(renderer, texture, NULL, NULL);
-        SDL_RenderCopy(renderer, texture, &from, &to);
+        for(int x = 0; x < xres; x += 32)
+        {
+            for(int y = 0; y < yres; y += 32)
+            {
+                SDL_RenderCopy(renderer, texture, &from, &to);
+            }
+        }
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
