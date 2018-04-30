@@ -14,6 +14,8 @@ int main()
     SDL_Renderer* renderer = NULL;
     const int xres = 800;
     const int yres = 400;
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_CreateWindowAndRenderer(xres, yres, 0, &window, &renderer);
     SDL_Surface* surface = Util_load("art/basic.bmp", 0, 0, 0);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
     if(surface == NULL || texture == NULL)
@@ -24,8 +26,6 @@ int main()
     // Input
     const uint8_t* key;
     SDL_Event event;
-    SDL_Init(SDL_INIT_VIDEO);
-    SDL_CreateWindowAndRenderer(xres, yres, 0, &window, &renderer);
 
     // Main Loop
     int done = 0;
