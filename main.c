@@ -111,7 +111,6 @@ int main()
         to_gd.w = 32;
         to_gd.h = 32;
         SDL_RenderCopy(renderer, texture_c, &from_gd, &to_gd);
-        
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
