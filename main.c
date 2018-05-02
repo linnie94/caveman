@@ -17,8 +17,8 @@ int main()
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(xres, yres, 0, &window, &renderer);
     SDL_Surface* surface = Util_load("art/basic.bmp", 255, 255, 255);
-    SDL_Surface* surface_c = Util_load("art/chars.bmp", 255, 255, 255);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Surface* surface_c = Util_load("art/chars.bmp", 255, 255, 255);
     SDL_Texture* texture_c = SDL_CreateTextureFromSurface(renderer, surface_c);
     if(surface == NULL || texture == NULL)
     {
