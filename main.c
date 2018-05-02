@@ -8,6 +8,30 @@
 
 #include "Util.h"
 
+void draw_grass(int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture)
+{
+    // Grass
+    SDL_Rect from;
+    from.x = 0;
+    from.y = 128;
+    from.w = 16;
+    from.h = 16;
+    SDL_Rect to;
+    to.x = 0;
+    to.y = 0;
+    to.w = 32;
+    to.h = 32;
+    for(int x = 0; x < xres; x += 32)
+    {
+        for(int y = 0; y < yres; y += 32)
+        {
+            to.x = x;
+            to.y = y;
+            SDL_RenderCopy(renderer, texture, &from, &to);
+        }
+    }
+}
+
 int main()
 {
     SDL_Window* window;
@@ -45,26 +69,7 @@ int main()
         }
         // Screen
         Util_QuickFill(renderer, 0, 0, 0);
-        // Grass
-        SDL_Rect from;
-        from.x = 0;
-        from.y = 128;
-        from.w = 16;
-        from.h = 16;
-        SDL_Rect to;
-        to.x = 0;
-        to.y = 0;
-        to.w = 32;
-        to.h = 32;
-        for(int x = 0; x < xres; x += 32)
-        {
-            for(int y = 0; y < yres; y += 32)
-            {
-                to.x = x;
-                to.y = y;
-                SDL_RenderCopy(renderer, texture, &from, &to);
-            }
-        }
+        draw_grass(xres, yres, renderer, texture);
         // Ghost
         SDL_Rect from_gr;
         from_gr.x = 96;
