@@ -43,6 +43,7 @@ int main()
         }
         // Screen
         Util_QuickFill(renderer, 0, 0, 0);
+        // Grass
         SDL_Rect from;
         from.x = 0;
         from.y = 128;
@@ -62,17 +63,55 @@ int main()
                 SDL_RenderCopy(renderer, texture, &from, &to);
             }
         }
-        SDL_Rect from_g;
-        from_g.x = 96;
-        from_g.y = 96;
-        from_g.w = 16;
-        from_g.h = 16;
-        SDL_Rect to_g;
-        to_g.x = 16;
-        to_g.y = 16;
-        to_g.w = 32;
-        to_g.h = 32;
-        SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
+        // Ghost R
+        SDL_Rect from_gr;
+        from_gr.x = 96;
+        from_gr.y = 96;
+        from_gr.w = 16;
+        from_gr.h = 16;
+        SDL_Rect to_gr;
+        to_gr.x = 16;
+        to_gr.y = 16;
+        to_gr.w = 32;
+        to_gr.h = 32;
+        SDL_RenderCopy(renderer, texture_c, &from_gr, &to_gr);
+        // Ghost L
+        SDL_Rect from_gl;
+        from_gl.x = 96;
+        from_gl.y = 80;
+        from_gl.w = 16;
+        from_gl.h = 16;
+        SDL_Rect to_gl;
+        to_gl.x = 0;
+        to_gl.y = 16;
+        to_gl.w = 32;
+        to_gl.h = 32;
+        SDL_RenderCopy(renderer, texture_c, &from_gl, &to_gl);
+        // Ghost U
+        SDL_Rect from_gu;
+        from_gu.x = 96;
+        from_gu.y = 112;
+        from_gu.w = 16;
+        from_gu.h = 16;
+        SDL_Rect to_gu;
+        to_gu.x = 96;
+        to_gu.y = 16;
+        to_gu.w = 32;
+        to_gu.h = 32;
+        SDL_RenderCopy(renderer, texture_c, &from_gu, &to_gu);
+        // Ghost D
+        SDL_Rect from_gd;
+        from_gd.x = 96;
+        from_gd.y = 64;
+        from_gd.w = 16;
+        from_gd.h = 16;
+        SDL_Rect to_gd;
+        to_gd.x = 48;
+        to_gd.y = 16;
+        to_gd.w = 32;
+        to_gd.h = 32;
+        SDL_RenderCopy(renderer, texture_c, &from_gd, &to_gd);
+        
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
