@@ -63,7 +63,7 @@ int main()
         // Exit
         SDL_PollEvent(&event);
         key = SDL_GetKeyboardState(NULL);
-        if(event.type == SDL_QUIT || key[SDL_SCANCODE_ESCAPE] || key[SDL_SCANCODE_END])
+        if(event.type == SDL_QUIT || key[SDL_SCANCODE_ESCAPE] || key[SDL_SCANCODE_END] || key[SDL_SCANCODE_X])
         {
             done = 1;
         }
@@ -71,53 +71,53 @@ int main()
         Util_QuickFill(renderer, 0, 0, 0);
         draw_grass(xres, yres, renderer, texture);
         // Ghost
-        SDL_Rect from_gr;
-        from_gr.x = 96;
-        from_gr.y = 96;
-        from_gr.w = 16;
-        from_gr.h = 16;
-        SDL_Rect to_gr;
-        to_gr.x = 16;
+        SDL_Rect from_g;
+        from_g.x = 96;
+        from_g.y = 96;
+        from_g.w = 16;
+        from_g.h = 16;
+        SDL_Rect to_g;
+        to_g.x = 16;
         if(vx > 0)
         {
-            to_gr.x += vx;
+            to_g.x += vx;
         }
         else
         {
-            to_gr.x -= vx;
+            to_g.x -= vx;
         }
-        to_gr.y = 16;
+        to_g.y = 16;
         if(vy > 0)
         {
-            to_gr.y += vy;
+            to_g.y += vy;
         }
         else
         {
-            to_gr.y -= vy;
+            to_g.y -= vy;
         }
-        to_gr.w = 32;
-        to_gr.h = 32;
+        to_g.w = 32;
+        to_g.h = 32;
         if(key[SDL_SCANCODE_D])
         {
             vx += 1;
-            from_gr.y = 96;
+            from_g.y = 96;
         }
         if(key[SDL_SCANCODE_A])
         {
             vx -= 1;
-            from_gr.y = 80;
+            from_g.y = 80;
         }
         if(key[SDL_SCANCODE_W])
         {
             vy -= 1;
-            from_gr.y = 112;
+            from_g.y = 112;
         }
         if(key[SDL_SCANCODE_S])
         {
             vy += 1;
-            from_gr.y = 64;
+            from_g.y = 64;
         }
-        SDL_RenderCopy(renderer, texture_c, &from_gr, &to_gr);
+        SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
