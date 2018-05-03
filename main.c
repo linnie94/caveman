@@ -32,33 +32,33 @@ void draw_grass(int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture
     }
 }
 
-void draw_ghost(uint8_t* key, float vx, float vy, SDL_Renderer* renderer, SDL_Texture* texture)
+void draw_ghost(uint8_t* key, float vx, float vy, SDL_Renderer* renderer, SDL_Texture* texture_c, SDL_Rect* to_g)
 {
     SDL_Rect from_g;
     from_g.x = 96;
     from_g.y = 96;
     from_g.w = 16;
     from_g.h = 16;
-    SDL_Rect to_g;
-    to_g.x = 16;
-    to_g.y = 16;
-    to_g.w = 32;
-    to_g.h = 32;
+    //SDL_Rect to_g;
+    to_g->x = 16;
+    to_g->y = 16;
+    to_g->w = 32;
+    to_g->h = 32;
     if(vx > 0)
     {
-        to_g.x += vx;
+        to_g->x += vx;
     }
     else
     {
-        to_g.x -= vx;
+        to_g->x -= vx;
     }
     if(vy > 0)
     {
-        to_g.y += vy;
+        to_g->y += vy;
     }
     else
     {
-        to_g.y -= vy;
+        to_g->y -= vy;
     }
     if(key[SDL_SCANCODE_D])
     {
@@ -122,7 +122,8 @@ int main()
         Util_QuickFill(renderer, 0, 0, 0);
         draw_grass(xres, yres, renderer, texture);
         // Ghost
-        draw_ghost(key, vx, vy, renderer, texture_c);
+        SDL_Rect to_g;
+        draw_ghost(key, vx, vy, renderer, texture_c, &to_g);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
