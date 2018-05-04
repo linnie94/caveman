@@ -39,11 +39,6 @@ void draw_ghost(uint8_t* key, float vx, float vy, SDL_Renderer* renderer, SDL_Te
     from_g.y = 96;
     from_g.w = 16;
     from_g.h = 16;
-    //SDL_Rect to_g;
-    to_g->x = 16;
-    to_g->y = 16;
-    to_g->w = 32;
-    to_g->h = 32;
     if(vx > 0)
     {
         to_g->x += vx;
@@ -106,6 +101,12 @@ int main()
     const uint8_t* key = SDL_GetKeyboardState(NULL);
     SDL_Event event;
 
+    SDL_Rect to_g;
+    to_g->x = 16;
+    to_g->y = 16;
+    to_g->w = 32;
+    to_g->h = 32;
+
     // Main Loop
     int done = 0;
     while(!done)
@@ -122,7 +123,6 @@ int main()
         Util_QuickFill(renderer, 0, 0, 0);
         draw_grass(xres, yres, renderer, texture);
         // Ghost
-        SDL_Rect to_g;
         draw_ghost(key, vx, vy, renderer, texture_c, &to_g);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
