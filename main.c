@@ -102,10 +102,10 @@ int main()
     SDL_Event event;
 
     SDL_Rect to_g;
-    to_g->x = 16;
-    to_g->y = 16;
-    to_g->w = 32;
-    to_g->h = 32;
+    to_g.x = 16;
+    to_g.y = 16;
+    to_g.w = 32;
+    to_g.h = 32;
 
     // Main Loop
     int done = 0;
@@ -124,6 +124,7 @@ int main()
         draw_grass(xres, yres, renderer, texture);
         // Ghost
         draw_ghost(key, vx, vy, renderer, texture_c, &to_g);
+
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
