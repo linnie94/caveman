@@ -32,50 +32,28 @@ void draw_grass(int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture
     }
 }
 
-void draw_ghost(uint8_t* key, float vx, float vy, SDL_Renderer* renderer, SDL_Texture* texture_c, SDL_Rect* to_g)
+void draw_ghost(uint8_t* key, SDL_Renderer* renderer, SDL_Texture* texture_c, SDL_Rect* from_g, SDL_Rect* to_g)
 {
-    SDL_Rect from_g;
-    from_g.x = 96;
-    from_g.y = 96;
-    from_g.w = 16;
-    from_g.h = 16;
-    if(vx > 0)
-    {
-        to_g->x += vx;
-    }
-    else
-    {
-        to_g->x -= vx;
-    }
-    if(vy > 0)
-    {
-        to_g->y += vy;
-    }
-    else
-    {
-        to_g->y -= vy;
-    }
     if(key[SDL_SCANCODE_D])
     {
-        vx += 1;
-        from_g.y = 96;
+        to_g->x += 1;
+        from_g->y = 96;
     }
     if(key[SDL_SCANCODE_A])
     {
-        vx -= 1;
-        from_g.y = 80;
+        to_g->x -= 1;
+        from_g->y = 80;
     }
     if(key[SDL_SCANCODE_W])
     {
-        vy -= 1;
-        from_g.y = 112;
+        to_g->y -= 1;
+        from_g->y = 112;
     }
     if(key[SDL_SCANCODE_S])
     {
-        vy += 1;
-        from_g.y = 64;
+        to_g->y += 1;
+        from_g->y = 64;
     }
-    SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
 }
 
 int main()
@@ -84,8 +62,6 @@ int main()
     SDL_Renderer* renderer = NULL;
     const int xres = 800;
     const int yres = 400;
-    float vx = 0.0;
-    float vy = 0.0;
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(xres, yres, 0, &window, &renderer);
     SDL_Surface* surface = Util_load("art/basic.bmp", 255, 255, 255);
@@ -100,6 +76,12 @@ int main()
     // Input
     const uint8_t* key = SDL_GetKeyboardState(NULL);
     SDL_Event event;
+
+    SDL_Rect from_g;
+    from_g.x = 96;
+    from_g.y = 96;
+    from_g.w = 16;
+    from_g.h = 16;
 
     SDL_Rect to_g;
     to_g.x = 16;
@@ -123,8 +105,8 @@ int main()
         Util_QuickFill(renderer, 0, 0, 0);
         draw_grass(xres, yres, renderer, texture);
         // Ghost
-        draw_ghost(key, vx, vy, renderer, texture_c, &to_g);
-
+        draw_ghost(key, renderer, texture_c, &from_g, &to_g);
+        SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
         const int ms = 1000.0 / (60 - (t2 - t1));
