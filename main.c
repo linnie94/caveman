@@ -209,15 +209,17 @@ int main()
     const uint8_t* key = SDL_GetKeyboardState(NULL);
     SDL_Event event;
 
+    //Grass
+
+    // Ghost
     SDL_Rect from_g;
     from_g.x = 96;
     from_g.y = 96;
     from_g.w = 16;
     from_g.h = 16;
-
     SDL_Rect to_g;
-    to_g.x = 16;
-    to_g.y = 16;
+    to_g.x = 360;
+    to_g.y = 200;
     to_g.w = 32;
     to_g.h = 32;
 
@@ -236,6 +238,7 @@ int main()
         }
         // Screen
         Util_QuickFill(renderer, 0, 0, 0);
+        // Grass
         draw_grass(xres, yres, renderer, texture);
         // Ghost
         draw_ghost(s1, key, &from_g, &to_g);
