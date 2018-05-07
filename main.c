@@ -240,7 +240,7 @@ int main()
         // Grass
         draw_grass(xres, yres, renderer, texture);
         // Ghost
-        //draw_ghost(s1, key, &from_g, &to_g);
+        draw_ghost(s1, key, &from_g, &to_g);
         SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
