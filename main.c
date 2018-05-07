@@ -190,7 +190,7 @@ void draw_ghost(int s1, uint8_t* key, SDL_Rect* from_g, SDL_Rect* to_g)
 
 int main()
 {
-    SDL_Window* window;
+    SDL_Window* window = NULL;
     SDL_Renderer* renderer = NULL;
     const int xres = 800;
     const int yres = 400;
@@ -205,11 +205,10 @@ int main()
         printf("%s\n", SDL_GetError());
         exit(1);
     }
+
     // Input
     const uint8_t* key = SDL_GetKeyboardState(NULL);
     SDL_Event event;
-
-    //Grass
 
     // Ghost
     SDL_Rect from_g;
@@ -241,7 +240,7 @@ int main()
         // Grass
         draw_grass(xres, yres, renderer, texture);
         // Ghost
-        draw_ghost(s1, key, &from_g, &to_g);
+        //draw_ghost(s1, key, &from_g, &to_g);
         SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
