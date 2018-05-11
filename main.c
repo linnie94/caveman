@@ -247,7 +247,7 @@ int main()
     SDL_Window* window = NULL;
     SDL_Renderer* renderer = NULL;
     const int xres = 800;
-    const int yres = 400;
+    const int yres = 480;
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(xres, yres, 0, &window, &renderer);
     SDL_Surface* surface = Util_load("art/basic.bmp", 255, 255, 255);
