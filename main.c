@@ -188,48 +188,42 @@ void draw_ghost(int s1, uint8_t* key, SDL_Rect* from_g, SDL_Rect* to_g)
     }
 }
 
-SDL_Rect get_tile(char c, int w, int h)
+SDL_Rect get_tile(char c)
 {
-    for(int y = 0; y < h; y++)
+    switch(c)
     {
-        for(int x = 0; x < w; x++)
-        {
-            switch(c)
+        case ',':
             {
-                case ',':
-                    {
-                        SDL_Rect grass;
-                        grass.x = 0;
-                        grass.y = 128;
-                        grass.w = grass.h = 16;
-                        return grass;
-                    }
-                case '%':
-                    {
-                        SDL_Rect river;
-                        river.x = 80;
-                        river.y = 32;
-                        river.w = river.h = 16;
-                        return river;
-                    }
-                case '$':
-                    {
-                        SDL_Rect rock;
-                        rock.x = 32;
-                        rock.y = 112;
-                        rock.w = rock.h = 16;
-                        return rock;
-                    }
-                case '!':
-                    {
-                        SDL_Rect tree;
-                        tree.x = 64;
-                        tree.y = 144;
-                        tree.w = tree.h = 16;
-                        return tree;
-                    }
+                SDL_Rect grass;
+                grass.x = 0;
+                grass.y = 128;
+                grass.w = grass.h = 16;
+                return grass;
             }
-        }
+        case '%':
+            {
+                SDL_Rect river;
+                river.x = 80;
+                river.y = 32;
+                river.w = river.h = 16;
+                return river;
+            }
+        case '$':
+            {
+                SDL_Rect rock;
+                rock.x = 32;
+                rock.y = 112;
+                rock.w = rock.h = 16;
+                return rock;
+            }
+        case '!':
+            {
+                SDL_Rect tree;
+                tree.x = 64;
+                tree.y = 144;
+                tree.w = tree.h = 16;
+                return tree;
+            }
     }
 }
 
@@ -244,7 +238,8 @@ SDL_Rect* draw_map(char* map[], int xres, int yres, SDL_Renderer* renderer, SDL_
     {
         for(int y = 0; y <= yres; y += 32)
         {
-            SDL_Rect from = get_tile(map, x/32, y/32);
+            char c = map[y/32][x/32];
+            SDL_Rect from = get_tile(c);
             to.x = x;
             to.y = y;
             SDL_RenderCopy(renderer, texture, &from, &to);
@@ -273,6 +268,7 @@ int main()
     char* map[] = {
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+        ",,,,,,,,,,,$,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
@@ -280,8 +276,7 @@ int main()
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
-        ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
-        ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+        ",,,,,,,,,,,,,,,,,,,,,,,,$,,,,,,,,,,,,,,,,,,,,,,,,,",
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
