@@ -7,20 +7,13 @@
 //
 
 #include "Util.h"
-
+#define WTO 32
+#define WFROM 16
 void draw_grass(int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture)
 {
     // Grass
-    SDL_Rect from;
-    from.x = 0;
-    from.y = 128;
-    from.w = 16;
-    from.h = 16;
-    SDL_Rect to;
-    to.x = 0;
-    to.y = 0;
-    to.w = 32;
-    to.h = 32;
+    SDL_Rect from = {0, 128, WFROM, WFROM};
+    SDL_Rect to = {0, 0, WTO, WTO};
     for(int x = 0; x < xres; x += 32)
     {
         for(int y = 0; y < yres; y += 32)
@@ -311,16 +304,8 @@ int main()
     SDL_Event event;
 
     // Ghost
-    SDL_Rect from_g;
-    from_g.x = 96;
-    from_g.y = 96;
-    from_g.w = 16;
-    from_g.h = 16;
-    SDL_Rect to_g;
-    to_g.x = 360;
-    to_g.y = 200;
-    to_g.w = 32;
-    to_g.h = 32;
+    SDL_Rect from_g = {96, 96, 16, 16};
+    SDL_Rect to_g = {360, 200, 32, 32};
 
     // Main Loop
     int done = 0;
