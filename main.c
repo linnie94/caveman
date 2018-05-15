@@ -243,6 +243,15 @@ SDL_Rect* draw_map(char* map[], int xres, int yres, SDL_Renderer* renderer, SDL_
     }
 }
 
+void get_pos()
+{
+}
+
+void print_number(char* portals[], SDL_Renderer* renderer, SDL_Texture* texture)
+{
+
+}
+
 int main()
 {
     SDL_Window* window = NULL;
@@ -299,6 +308,25 @@ int main()
         "                          "
     };
 
+    char* portals[] = {
+        "                          ",
+        "                          ",
+        "                          ",
+        "                          ",
+        "    1                     ",
+        "                          ",
+        "                          ",
+        "                          ",
+        "                          ",
+        "                          ",
+        "                          ",
+        "                          ",
+        "                          ",
+        "                          ",
+        "                          ",
+        "                          "
+    };
+
     // Input
     const uint8_t* key = SDL_GetKeyboardState(NULL);
     SDL_Event event;
@@ -327,6 +355,8 @@ int main()
         // Map
         draw_map(map, xres, yres, renderer, texture);
         draw_map(map_obj, xres, yres, renderer, texture);
+        // Portals
+        
         // Ghost
         draw_ghost(s1, key, &from_g, &to_g);
         SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
