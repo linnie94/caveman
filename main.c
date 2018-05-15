@@ -7,8 +7,10 @@
 //
 
 #include "Util.h"
+
 #define WTO 32
 #define WFROM 16
+
 void draw_grass(int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture)
 {
     // Grass
@@ -222,11 +224,7 @@ SDL_Rect get_tile(char c)
 
 SDL_Rect* draw_map(char* map[], int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture)
 {
-    SDL_Rect to;
-    to.x = 0;
-    to.y = 0;
-    to.w = 32;
-    to.h = 32;
+    SDL_Rect to = {0, 0, 32, 32};
     for(int x = 0; x <= xres; x += 32)
     {
         for(int y = 0; y <= yres; y += 32)
