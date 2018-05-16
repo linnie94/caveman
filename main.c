@@ -262,11 +262,8 @@ int main()
     SDL_Surface* surface_c = Util_load("art/chars.bmp", 255, 255, 255);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
     SDL_Texture* texture_c = SDL_CreateTextureFromSurface(renderer, surface_c);
-    if(surface == NULL || texture == NULL)
-    {
-        printf("%s\n", SDL_GetError());
-        exit(1);
-    }
+    Util_Check(surface);
+    Util_Check(texture);
     // Map
     char* map[] = {
         ",,,,,,,,,,,,,,,,,,,,,,,,,,",
@@ -311,7 +308,7 @@ int main()
         "                          ",
         "                          ",
         "                          ",
-        "    1                     ",
+        "1                         ",
         "                          ",
         "                          ",
         "                          ",
