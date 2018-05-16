@@ -247,7 +247,6 @@ void get_pos()
 
 void print_number(char* portals[], SDL_Renderer* renderer, SDL_Texture* texture)
 {
-
 }
 
 int main()
@@ -345,13 +344,10 @@ int main()
         }
         // Screen
         Util_QuickFill(renderer, 0, 0, 0);
-        // Grass
-        //draw_grass(xres, yres, renderer, texture);
         // Map
         draw_map(map, xres, yres, renderer, texture);
         draw_map(map_obj, xres, yres, renderer, texture);
         // Portals
-        
         // Ghost
         draw_ghost(s1, key, &from_g, &to_g);
         SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
