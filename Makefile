@@ -1,12 +1,12 @@
-BIN = a.out
+BIN = caveman
 
 SRC = main.c Util.c Map.c Ghost.c
-OBJS = $(SRC: .c=.o)
-DEPS = $(SRC: .c=.d)
+OBJS = $(SRC:.c=.o)
+DEPS = $(SRC:.c=.d)
 
-CFLAGS = -Wshadow -Wall -Wpendatic -Wextra -g -lSDL2
+CFLAGS = -Wshadow -Wall -Wpedantic -Wextra -g
 
-LDFLAGS = -lm
+LDFLAGS = -lm -lSDL2
 
 $(BIN): $(OBJS)
 	gcc $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(BIN)
