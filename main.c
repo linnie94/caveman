@@ -33,7 +33,7 @@ int print_number(char* portals[], SDL_Rect* to_g)
 {
     if(portals[to_g->y / 32][to_g->x / 32] != ' ')
     {
-        printf("%d\n", portals);
+        printf("%d\n", portals[to_g->y / 32][to_g->x / 32] - '0');
     }
 }
 
