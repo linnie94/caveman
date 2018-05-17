@@ -7,6 +7,8 @@
 //
 
 #include "Util.h"
+#include "Map.h"
+#include "Ghost.h"
 
 #define WTO 32
 #define WFROM 16
@@ -27,236 +29,9 @@ void draw_grass(int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture
     }
 }
 
-void draw_ghost(int s1, uint8_t* key, SDL_Rect* from_g, SDL_Rect* to_g)
+int print_number(char* portals[], SDL_Rect* to_g)
 {
-    if(key[SDL_SCANCODE_D])
-    {
-        if(s1 % 3 == 1)
-        {
-            from_g->x = 96;
-            from_g->y = 96;
-        }
-        else if(s1 % 3 == 2)
-        {
-            from_g->x = 112;
-            from_g->y = 96;
-        }
-        else if(s1 % 3 == 3)
-        {
-            from_g->x = 128;
-            from_g->y = 96;
-        }
-        to_g->x += 1;
-        from_g->y = 96;
-    }
-    else if(from_g->y == 96)
-    {
-        if(s1 % 3 == 1)
-        {
-            from_g->x = 96;
-            from_g->y = 96;
-        }
-        else if(s1 % 3 == 2)
-        {
-            from_g->x = 112;
-            from_g->y = 96;
-        }
-        else if(s1 % 3 == 3)
-        {
-            from_g->x = 128;
-            from_g->y = 96;
-        }
-    }
-    if(key[SDL_SCANCODE_A])
-    {
-        if(s1 % 3 == 1)
-        {
-            from_g->x = 96;
-            from_g->y = 80;
-        }
-        else if(s1 % 3 == 2)
-        {
-            from_g->x = 112;
-            from_g->y = 80;
-        }
-        else if(s1 % 3 == 3)
-        {
-            from_g->x = 128;
-            from_g->y = 80;
-        }
-        to_g->x -= 1;
-        from_g->y = 80;
-    }
-    else if(from_g->y == 80)
-    {
-        if(s1 % 3 == 1)
-        {
-            from_g->x = 96;
-            from_g->y = 80;
-        }
-        else if(s1 % 3 == 2)
-        {
-            from_g->x = 112;
-            from_g->y = 80;
-        }
-        else if(s1 % 3 == 3)
-        {
-            from_g->x = 128;
-            from_g->y = 80;
-        }
-    }
-    if(key[SDL_SCANCODE_W])
-    {
-        if(s1 % 3 == 1)
-        {
-            from_g->x = 96;
-            from_g->y = 112;
-        }
-        else if(s1 % 3 == 2)
-        {
-            from_g->x = 112;
-            from_g->y = 112;
-        }
-        else if(s1 % 3 == 3)
-        {
-            from_g->x = 128;
-            from_g->y = 112;
-        }
-        to_g->y -= 1;
-        from_g->y = 112;
-    }
-    else if(from_g->y == 112)
-    {
-        if(s1 % 3 == 1)
-        {
-            from_g->x = 96;
-            from_g->y = 112;
-        }
-        else if(s1 % 3 == 2)
-        {
-            from_g->x = 112;
-            from_g->y = 112;
-        }
-        else if(s1 % 3 == 3)
-        {
-            from_g->x = 128;
-            from_g->y = 112;
-        }
-    }
-    if(key[SDL_SCANCODE_S])
-    {
-        if(s1 % 3 == 1)
-        {
-            from_g->x = 96;
-            from_g->y = 64;
-        }
-        else if(s1 % 3 == 2)
-        {
-            from_g->x = 112;
-            from_g->y = 64;
-        }
-        else if(s1 % 3 == 3)
-        {
-            from_g->x = 128;
-            from_g->y = 64;
-        }
-        to_g->y += 1;
-        from_g->y = 64;
-    }
-    else if(from_g->y == 64)
-    {
-        if(s1 % 3 == 1)
-        {
-            from_g->x = 96;
-            from_g->y = 64;
-        }
-        else if(s1 % 3 == 2)
-        {
-            from_g->x = 112;
-            from_g->y = 64;
-        }
-        else if(s1 % 3 == 3)
-        {
-            from_g->x = 128;
-            from_g->y = 64;
-        }
-    }
-}
-
-SDL_Rect get_tile(char c)
-{
-    switch(c)
-    {
-        case ',':
-            {
-                SDL_Rect grass;
-                grass.x = 0;
-                grass.y = 128;
-                grass.w = grass.h = 16;
-                return grass;
-            }
-        case '%':
-            {
-                SDL_Rect river;
-                river.x = 80;
-                river.y = 32;
-                river.w = river.h = 16;
-                return river;
-            }
-        case '$':
-            {
-                SDL_Rect rock;
-                rock.x = 32;
-                rock.y = 112;
-                rock.w = rock.h = 16;
-                return rock;
-            }
-        case '!':
-            {
-                SDL_Rect tree;
-                tree.x = 64;
-                tree.y = 144;
-                tree.w = tree.h = 16;
-                return tree;
-            }
-    }
-}
-
-SDL_Rect* draw_map(char* map[], int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture)
-{
-    SDL_Rect to = {0, 0, 32, 32};
-    for(int x = 0; x <= xres; x += 32)
-    {
-        for(int y = 0; y <= yres; y += 32)
-        {
-            char c = map[y/32][x/32];
-            if(c != ' ')
-            {
-                SDL_Rect from = get_tile(c);
-                to.x = x;
-                to.y = y;
-                SDL_RenderCopy(renderer, texture, &from, &to);
-            }
-        }
-    }
-}
-
-void get_pos()
-{
-}
-
-int print_number(char* portals[], int xres, int yres, SDL_Rect* to_g)
-{
-    for(int x = 0; x <= xres; x += 32)
-    {
-        for(int y = 0; y <= yres; y += 32)
-        {
-            if(portals[to_g->y/32][to_g->x/32] != ' ')
-            {
-                printf("%d\n", portals[to_g->y / 32][to_g->x / 32]);
-            }
-        }
-    }
+    printf("%d\n", portals[to_g->y / 32][to_g->x / 32]);
 }
 
 int main()
@@ -355,12 +130,12 @@ int main()
         // Screen
         Util_QuickFill(renderer, 0, 0, 0);
         // Map
-        draw_map(map, xres, yres, renderer, texture);
-        draw_map(map_obj, xres, yres, renderer, texture);
+        Map_Draw(map, xres, yres, renderer, texture);
+        Map_Draw(map_obj, xres, yres, renderer, texture);
         // Portals
-        print_number(portals, xres, yres, &to_g);
+        print_number(portals, &to_g);
         // Ghost
-        draw_ghost(s1, key, &from_g, &to_g);
+        Ghost_Draw(s1, key, &from_g, &to_g);
         SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
