@@ -245,8 +245,18 @@ void get_pos()
 {
 }
 
-void print_number(char* portals[], SDL_Renderer* renderer, SDL_Texture* texture)
+int print_number(char* portals[], int xres, int yres, SDL_Rect* to_g)
 {
+    for(int x = 0; x <= xres; x += 32)
+    {
+        for(int y = 0; y <= yres; y += 32)
+        {
+            if(portals[to_g->y/32][to_g->x/32] != ' ')
+            {
+                printf("%d\n", portals[to_g->y / 32][to_g->x / 32]);
+            }
+        }
+    }
 }
 
 int main()
@@ -307,12 +317,12 @@ int main()
         "                          ",
         "                          ",
         "                          ",
-        "1                         ",
-        "                          ",
-        "                          ",
-        "                          ",
-        "                          ",
-        "                          ",
+        "1                        1",
+        "3                        1",
+        "2                        5",
+        "1                        3",
+        "1                        4",
+        "1                        4",
         "                          ",
         "                          ",
         "                          ",
@@ -348,6 +358,7 @@ int main()
         draw_map(map, xres, yres, renderer, texture);
         draw_map(map_obj, xres, yres, renderer, texture);
         // Portals
+        print_number(portals, xres, yres, &to_g);
         // Ghost
         draw_ghost(s1, key, &from_g, &to_g);
         SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
