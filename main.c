@@ -31,7 +31,10 @@ void draw_grass(int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture
 
 int print_number(char* portals[], SDL_Rect* to_g)
 {
-    printf("%d\n", portals[to_g->y / 32][to_g->x / 32]);
+    if(portals[to_g->y / 32][to_g->x / 32] != ' ')
+    {
+        printf("%d\n", portals);
+    }
 }
 
 int main()
