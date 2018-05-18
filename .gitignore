@@ -1,2 +1,4 @@
 caveman
-*.o *.d
+*.o
+*.d
+
