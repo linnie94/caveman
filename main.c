@@ -13,22 +13,6 @@
 #define WTO 32
 #define WFROM 16
 
-void draw_grass(int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture)
-{
-    // Grass
-    SDL_Rect from = {0, 128, WFROM, WFROM};
-    SDL_Rect to = {0, 0, WTO, WTO};
-    for(int x = 0; x < xres; x += 32)
-    {
-        for(int y = 0; y < yres; y += 32)
-        {
-            to.x = x;
-            to.y = y;
-            SDL_RenderCopy(renderer, texture, &from, &to);
-        }
-    }
-}
-
 void print_number(char* portals[], SDL_Rect* to_g)
 {
     if(portals[to_g->y / 32][to_g->x / 32] != ' ')
