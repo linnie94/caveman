@@ -4,6 +4,7 @@ static SDL_Rect get_tile(char c)
 {
     switch(c)
     {
+        default:
         case ',':
             {
                 SDL_Rect grass;
@@ -39,7 +40,7 @@ static SDL_Rect get_tile(char c)
     }
 }
 
-SDL_Rect* Map_Draw(char* map[], int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture)
+void Map_Draw(char* map[], int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture)
 {
     SDL_Rect to = {0, 0, 32, 32};
     for(int x = 0; x <= xres; x += 32)
@@ -57,4 +58,3 @@ SDL_Rect* Map_Draw(char* map[], int xres, int yres, SDL_Renderer* renderer, SDL_
         }
     }
 }
-
