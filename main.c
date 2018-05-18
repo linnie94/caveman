@@ -29,7 +29,7 @@ void draw_grass(int xres, int yres, SDL_Renderer* renderer, SDL_Texture* texture
     }
 }
 
-int print_number(char* portals[], SDL_Rect* to_g)
+void print_number(char* portals[], SDL_Rect* to_g)
 {
     if(portals[to_g->y / 32][to_g->x / 32] != ' ')
     {
@@ -125,7 +125,6 @@ int main()
         int s1 = (t1/250) % 16;
         // Exit
         SDL_PollEvent(&event);
-        key = SDL_GetKeyboardState(NULL);
         if(event.type == SDL_QUIT || key[SDL_SCANCODE_ESCAPE] || key[SDL_SCANCODE_END] || key[SDL_SCANCODE_X])
         {
             done = 1;
