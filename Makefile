@@ -1,8 +1,8 @@
 BIN = caveman
 
-SRC = main.c Util.c Map.c Ghost.c
-OBJS = $(SRC:.c=.o)
-DEPS = $(SRC:.c=.d)
+SRCS = main.c Util.c Map.c Ghost.c
+OBJS = $(SRCS:.c=.o)
+DEPS = $(SRCS:.c=.d)
 
 CFLAGS = -Wshadow -Wall -Wpedantic -Wextra -g
 LDFLAGS = -lm -lSDL2
