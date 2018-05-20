@@ -13,7 +13,7 @@
 #define WTO 32
 #define WFROM 16
 
-void print_number(char* portals[], SDL_Rect* to_g)
+void portal_location(char* portals[], SDL_Rect* to_g)
 {
     if(portals[to_g->y / 32][to_g->x / 32] != ' ')
     {
@@ -118,8 +118,8 @@ int main()
         // Map
         Map_Draw(map, xres, yres, renderer, texture);
         Map_Draw(map_obj, xres, yres, renderer, texture);
-        // Portals
-        print_number(portals, &to_g);
+        // Portalsd
+        portal_location(portals, &to_g);
         // Ghost
         Ghost_Draw(s1, key, &from_g, &to_g);
         SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
