@@ -26,7 +26,7 @@ int main()
 {
     SDL_Window* window = NULL;
     SDL_Renderer* renderer = NULL;
-    int portal;
+    int portal = 0;
     const int xres = 800;
     const int yres = 480;
     SDL_Init(SDL_INIT_VIDEO);
@@ -123,10 +123,6 @@ int main()
         Map_Draw(map_obj, xres, yres, renderer, texture);
         // Portals
         if(portal_location(portals, &to_g) != -1)
-        {
-            printf("%d\n", portal_location(portals, &to_g));
-        }
-        else
         {
             portal = portal_location(portals, &to_g);
         }
