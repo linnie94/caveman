@@ -15,9 +15,9 @@
 
 void portal_location(char* portals[], SDL_Rect* to_g)
 {
-    if(portals[to_g->y / 32][to_g->x / 32] != ' ')
+    if(portals[(to_g->y + 16) / 32][(to_g->x + 16) / 32] != ' ')
     {
-        printf("%d\n", portals[to_g->y / 32][to_g->x / 32] - '0');
+        printf("%d\n", portals[(to_g->y + 16) / 32][(to_g->x + 16) / 32] - '0');
     }
 }
 
@@ -35,6 +35,7 @@ int main()
     SDL_Texture* texture_c = SDL_CreateTextureFromSurface(renderer, surface_c);
     Util_Check(surface);
     Util_Check(texture);
+
     // Map
     char* map[] = {
         ",,,,,,,,,,,,,,,,,,,,,,,,,",
