@@ -121,7 +121,7 @@ int main()
         Map_Draw(map, xres, yres, renderer, texture);
         Map_Draw(map_obj, xres, yres, renderer, texture);
         // Portalsd
-        portal_location(portals, &to_g);
+        printf("%d\n", portal_location(portals, &to_g));
         // Ghost
         Ghost_Draw(s1, key, &from_g, &to_g);
         SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
