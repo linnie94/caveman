@@ -15,11 +15,9 @@
 
 int portal_location(char* portals[], SDL_Rect* to_g)
 {
-    int num; 
     if(portals[(to_g->y + 16) / 32][(to_g->x + 16) / 32] != ' ')
     {
-        num = printf("%d\n", portals[(to_g->y + 16) / 32][(to_g->x + 16) / 32] - '0');  
-        return num;
+        return portals[(to_g->y + 16) / 32][(to_g->x + 16) / 32] - '0';  
     }
     return -1;
 }
