@@ -37,6 +37,22 @@ static SDL_Rect get_tile(char c)
                 tree.w = tree.h = 16;
                 return tree;
             }
+        case '#':
+            {
+                SDL_Rect floor;
+                floor.x = 16;
+                floor.y = 144;
+                floor.w = floor.h = 16;
+                return floor;
+            }
+        case '*':
+            {
+                SDL_Rect torch;
+                torch.x = 64;
+                torch.y = 112;
+                torch.w = torch.h = 16;
+                return torch;
+            }
     }
 }
 
