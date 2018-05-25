@@ -39,7 +39,7 @@ int main()
     Util_Check(texture);
 
     // Map
-    char* map[][] = {
+    char* map[3][16] = {
         {
             ",,,,,,,,,,,,,,,,,,,,,,,,,",
             ",,,,,,,,,,,,,,,,,,,,,,,,,",
@@ -94,7 +94,7 @@ int main()
         }
     };
 
-    char* map_obj[][] = {
+    char* map_obj[3][16] = {
         {
             "!!!!!!!!!!!! !!!!!!!!!!!!",
             "!                       !",
@@ -149,7 +149,7 @@ int main()
         }
     };
 
-    char* portals[][] = {
+    char* portals[3][16] = {
         {
             "            1            ",
             "                         ",
