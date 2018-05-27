@@ -227,12 +227,12 @@ int main()
         // Screen
         Util_QuickFill(renderer, 0, 0, 0);
         // Map
-        Map_Draw(map, xres, yres, renderer, texture);
-        Map_Draw(map_obj, xres, yres, renderer, texture);
+        Map_Draw(map[portal], xres, yres, renderer, texture);
+        Map_Draw(map_obj[portal], xres, yres, renderer, texture);
         // Portals
-        if(portal_location(portals, &to_g) != -1)
+        if(portal_location(portals[portal], &to_g) != -1)
         {
-            portal = portal_location(portals, &to_g);
+            portal = portal_location(portals[portal], &to_g);
         }
         // Ghost
         Ghost_Draw(s1, key, &from_g, &to_g);
