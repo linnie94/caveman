@@ -9,16 +9,8 @@
 #include "Util.h"
 #include "Map.h"
 #include "Ghost.h"
+#include "Portal.h"
 #include "config.h"
-
-int portal_location(char* portals[], SDL_Rect* to_g)
-{
-    if(portals[(to_g->y + 16) / 32][(to_g->x + 16) / 32] != ' ')
-    {
-        return portals[(to_g->y + 16) / 32][(to_g->x + 16) / 32] - '0';  
-    }
-    return -1;
-}
 
 int main()
 {
@@ -228,9 +220,9 @@ int main()
         Map_Draw(map[portal], xres, yres, renderer, texture);
         Map_Draw(map_obj[portal], xres, yres, renderer, texture);
         // Portals
-        if(portal_location(portals[portal], &to_g) != -1)
+        if(Portal_Location(portals[portal], &to_g) != -1)
         {
-            portal = portal_location(portals[portal], &to_g);
+            portal = Portal_Location(portals[portal], &to_g);
         }
         // Ghost
         Ghost_Draw(s1, key, &from_g, &to_g);

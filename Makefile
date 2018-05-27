@@ -1,6 +1,6 @@
 BIN = caveman
 
-SRCS = main.c Util.c Map.c Ghost.c
+SRCS = main.c Util.c Map.c Ghost.c Portal.c
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 
