@@ -172,8 +172,8 @@ int main()
             "                         ",
             "                         ",
             "                         ",
-            "                         ",
-            "            0            "
+            "            0            ",
+            "                         "
         },{
             "                         ",
             "                         ",
@@ -225,7 +225,7 @@ int main()
             portal = Portal_Location(portals[portal], &to_g);
         }
         // Ghost
-        Ghost_Draw(s1, key, &from_g, &to_g);
+        Ghost_Draw(s1, xres, yres, key, &from_g, &to_g);
         SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
