@@ -1,7 +1,7 @@
 #include "Ghost.h"
 #include "Util.h"
 
-void Ghost_Draw(int s1, int xres, int yres, const uint8_t* key, SDL_Rect* from_g, SDL_Rect* to_g, portal)
+void Ghost_Draw(int s1, int xres, int yres, const uint8_t* key, SDL_Rect* from_g, SDL_Rect* to_g)
 {
     if(key[SDL_SCANCODE_D])
     {
@@ -27,11 +27,7 @@ void Ghost_Draw(int s1, int xres, int yres, const uint8_t* key, SDL_Rect* from_g
         }
         else
         {
-            to_g-> x = xres - 47;
-            if(to_g->x == portal)
-            {
-                to_g->x = 16;
-            }
+            to_g->x = xres - 47;
         }
     }
     else if(from_g->y == 96)
