@@ -226,6 +226,9 @@ int main()
         }
         // Ghost
         Ghost_Draw(s1, xres, yres, key, &from_g, &to_g);
+        if(map_obj[(to_g.y + 16) /32][(to_g.x + 16) / 32] == ' ')
+        {
+        }
         SDL_RenderCopy(renderer, texture_c, &from_g, &to_g);
         SDL_RenderPresent(renderer);
         const int t2 = SDL_GetTicks();
